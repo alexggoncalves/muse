@@ -1,15 +1,18 @@
-.art-list {
-    margin-top: 20px;
-    line-height: 2;
-    -webkit-column-count: 3;
-    -webkit-column-gap: 10px;
-    -moz-column-count: 3;
-    -moz-column-gap: 10px;
-    column-count: 3;
-    column-gap: 10px;
-    width: 100%;   
+.art-list-container {
+    width: 100%;
+    padding: 0 3vw;
 }
 
+.art-list {
+    line-height: 2;
+    -webkit-column-count: 6;
+    -webkit-gap: 14px;
+    -moz-column-count: 5;
+    -moz-gap: 14px;
+    column-count: 5;
+    gap: 14px;
+    row-gap: 14px;
+}
 
 .art-image {
     cursor: pointer;
@@ -21,7 +24,7 @@
 
 .floating-caption {
     line-height: 1.2;
-    position: absolute;
+    position: fixed;
     user-select: none;
     background-color: rgba(73, 85, 82, 0.8);
     border: 1px solid white;
@@ -37,47 +40,6 @@
     width: 60px;
 }
 
-.center {
-    position: absolute;
-    top: calc(50% + 10vh);
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-
-.bold {
-    font-weight: bold;
-}
-.page-navigator {
-    position: relative;
-    bottom: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 20px 0 0 0;
-    user-select: none;
-}
-
-.page-navigator:last-child{
-    padding-bottom: 20px;
-}
-.current-page {
-    border: 1px solid white;
-    padding: 5px 9px;
-    margin-right: 5px;
-    user-select: none;
-}
-
-.page-arrow {
-    width: 3vw;
-    padding: 5px;
-    cursor: pointer;
-}
-
-.page-arrow:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
 .disabled:hover {
     background-color: transparent;
 }
@@ -86,16 +48,6 @@
     cursor: default;
 }
 
-.page-results-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.results-count{
-    height: 100%;
-    user-select: none;
-}
 
 @media only screen and (max-width: 700px) {
     .art-list {
@@ -108,18 +60,9 @@
         transform: translateX(-1px);
     }
 
-    .page-arrow {
-        width: 10vw;
-        background-color: transparent !important;
-    }
-
-    .page-arrow:active{
-        background-color: rgba(255, 255, 255, 0.1);;
-    }
-
-    .art-object{
+    .art-object {
         border: 1px solid white;
-        border-top: 0;        
+        border-top: 0;
         margin-bottom: 15px;
     }
 
@@ -141,10 +84,9 @@
     }
 }
 
-
-@media only screen and (min-width: 701px) and (max-width: 1024px){
-    .art-object{
-        border: 1px solid white;  
+@media only screen and (min-width: 701px) and (max-width: 1024px) {
+    .art-object {
+        border: 1px solid white;
         margin-bottom: 15px;
     }
     .art-list {
@@ -164,12 +106,5 @@
     .floating-caption.hide {
         display: block;
     }
-    .page-arrow {
-        width: 5vw;
-        background-color: transparent !important;
-    }
-
-    .page-arrow:active{
-        background-color: rgba(255, 255, 255, 0.1);;
-    }
+    
 }

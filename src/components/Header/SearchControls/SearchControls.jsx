@@ -1,6 +1,4 @@
-import "./searchControls.css";
-
-import { ArtContext } from "../../contexts/ArtContext";
+import { ArtContext } from "../../../contexts/ArtContext";
 import { useContext } from "react";
 
 import DropDown from "./DropDown";

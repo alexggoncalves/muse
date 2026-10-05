@@ -1,7 +1,7 @@
 .options-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 0.5vw;
 }
 
 .search-controls-container {
@@ -38,7 +38,7 @@
     cursor: pointer;
     user-select: none;
 }
-.search-icon:hover{
+.search-icon:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 .search-bar:hover {
@@ -131,7 +131,7 @@
     align-items: center;
 }
 
-.options {
+.dropdown-options {
     position: absolute;
     top: 40px;
     left: 0;
@@ -145,9 +145,11 @@
     background-color: rgba(73, 85, 82, 0.8);
     border: 1px solid white;
     z-index: 10;
+    
+    transition: all 0.3s ease-in-out;
 }
 
-.options > div {
+.dropdown-options > div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -161,6 +163,8 @@
 
 .hide {
     display: none;
+    height: 0px;
+    opacity:0;
 }
 
 .chevron {
@@ -203,10 +207,8 @@
     }
 
     .sort-innactive {
-        background-color: transparent !important; 
+        background-color: transparent !important;
     }
-
-
 }
 
 @media only screen and (min-width: 701px) and (max-width: 1024px) {
@@ -226,9 +228,8 @@
     .sort-container {
         margin: 10px 0 0 0;
     }
-    
-    .sort-innactive {
-        background-color: transparent !important; 
-    }
 
+    .sort-innactive {
+        background-color: transparent !important;
+    }
 }

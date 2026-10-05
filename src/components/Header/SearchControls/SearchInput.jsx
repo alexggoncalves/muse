@@ -1,9 +1,9 @@
 import "./searchControls.css";
 
-import { ArtContext } from "../../contexts/ArtContext";
+import { ArtContext } from "../../../contexts/ArtContext";
 import { useContext, useEffect, useRef } from "react";
 
-import searchIcon from "./../../assets/icons8-search-150.png";
+import searchIcon from "../../../assets/search-icon.png";
 
 const SearchInput = () => {
     const searchInputRef = useRef();

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { QuestionMarkIcon } from "../Icons";
 
 const About = () => {
     const textRef = useRef();
@@ -25,12 +26,13 @@ const About = () => {
             onMouseLeave={toggleAboutVisibility}
             
         >
-            <span onClick={toggleAboutVisibilityMobile}>?</span >
+            <div className="question-mark" onClick={toggleAboutVisibilityMobile}>
+                <QuestionMarkIcon color="white" />
+            </div>
             <div className="about-text hide" ref={textRef}>
                 <p>
                     Muse serves as a comprehensive search platform for exploring
-                    the vast collection of art objects housed in Rijksmuseum in
-                    Amsterdam.
+                    the vast collection of art objects housed in the Art Institute of Chicago.
                 </p>
                 <p>
                     Click on the images to navigate to each object's dedicated

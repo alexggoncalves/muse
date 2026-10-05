@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { useRef } from "react";
 
-import chevron from "../../assets/icons8-chevron-30.png";
+import chevron from "../../../assets/icons8-chevron-30.png";
 
 const DropDown = ({ options, title, setChoice }) => {
     const optionsRef = useRef();
@@ -27,8 +27,16 @@ const DropDown = ({ options, title, setChoice }) => {
     const selectOption = (event) => {
         placeHolderRef.current.textContent = event.target.textContent;
         setChoice(event.target.id);
-        if(event.target.id == "any") setChoice("");
+        if (event.target.id == "any") setChoice("");
+    };
 
+    const toggleAboutVisibility = () => {
+        if (optionsRef.current) {
+            if (!optionsRef.current.classList.contains("hide"))
+                optionsRef.current.classList.add("hide");
+            if (dropDownRef.current.classList.contains("dropdown-active"))
+                dropDownRef.current.classList.remove("dropdown-active");
+        }
     };
 
     return (
@@ -38,6 +46,7 @@ const DropDown = ({ options, title, setChoice }) => {
                 <div
                     className="dropdown"
                     onClick={toggleDropdown}
+                    onMouseLeave={toggleAboutVisibility}
                     ref={dropDownRef}
                 >
                     <div className="dropdown-placeholder">
@@ -46,7 +55,7 @@ const DropDown = ({ options, title, setChoice }) => {
                         </p>
                         <img className="chevron" src={chevron} alt="chevron" />
                     </div>
-                    <div className="options hide" ref={optionsRef}>
+                    <div className="dropdown-options hide" ref={optionsRef}>
                         <div
                             className="option"
                             id={"any"}

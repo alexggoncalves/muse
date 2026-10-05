@@ -1,9 +1,9 @@
 import { useContext } from "react";
 
-import { ArtContext } from "../../contexts/ArtContext";
+import { ArtContext } from "../../../contexts/ArtContext";
 
-import clock from "../../assets/icons8-clock-50.png";
-import sortArrow from "../../assets/sort-arrow.png";
+import clock from "../../../assets/clock-icon.png";
+import sortArrow from "../../../assets/sort-arrow.png";
 
 const SortOptions = () => {
     const artContext = useContext(ArtContext);

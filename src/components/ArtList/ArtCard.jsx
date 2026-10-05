@@ -1,18 +1,11 @@
 import { useEffect, useRef } from "react";
+import { getImageUrl, getArtworkUrl } from "../../contexts/ArtContext";
 
-const ArtObject = ({ object }) => {
+const ArtCard = ({ art }) => {
+    const imageSrc = getImageUrl(art.image_id, 400);
+    const artworkUrl = getArtworkUrl(art.id);
+
     const captionRef = useRef();
-
-    const parseCaption = (str) => {
-        const commaIndex = str.indexOf(",");
-
-        return (
-            <>
-                <p className="bold">{str.substring(0, commaIndex)}</p>
-                <p>{str.substring(commaIndex + 2, str.length)}</p>
-            </>
-        );
-    };
 
     const toggleCaptionVisibility = () => {
         captionRef.current.classList.toggle("hide");
@@ -20,43 +13,49 @@ const ArtObject = ({ object }) => {
 
     const moveCaption = (event) => {
         const mouseX = event.clientX;
-        const mouseY = event.clientY + window.scrollY;
+        const mouseY = event.clientY;
+
         if (captionRef.current) {
-            captionRef.current.style.left = mouseX + 10 + "px";
-            captionRef.current.style.top = mouseY + 18 + "px";
+            captionRef.current.style.left = mouseX + 14 + "px";
+            captionRef.current.style.top = mouseY + 20 + "px";
         }
     };
 
     useEffect(() => {
         document.addEventListener("mousemove", moveCaption);
-        document.addEventListener("wheel", moveCaption);
         return () => {
             document.removeEventListener("mousemove", moveCaption);
-            document.removeEventListener("wheel", moveCaption);
         };
     }, []);
 
     return (
         <div className="art-object">
             <a
-                href={object.links.web}
+                href={artworkUrl}
                 target="_blank"
                 rel="noreferrer noopener"
             >
                 <img
                     className="art-image"
-                    src={object.webImage.url}
-                    alt={object.title}
+                    src={imageSrc}
+                    alt={art.title}
+                    loading="lazy"
                     onMouseEnter={toggleCaptionVisibility}
                     onMouseLeave={toggleCaptionVisibility}
                 />
-                
             </a>
+
             <div ref={captionRef} className={`hide floating-caption`}>
-                    {parseCaption(object.longTitle)}
+                <h3 className="art-card__title">{art.title}</h3>
+                <p className="art-card__artist">
+                    {art.artist_title ?? "Unknown"}
+                </p>
+                {art.date_display && (
+                    <p className="art-card__date">{art.date_display}</p>
+                )}
             </div>
         </div>
     );
 };
 
-export default ArtObject;
+export default ArtCard;
